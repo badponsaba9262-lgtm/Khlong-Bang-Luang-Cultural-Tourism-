@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Noto Serif Thai', serif;
+    --font-sans: 'Bai Jamjuree', 'Plus Jakarta Sans', sans-serif;
+    --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: #fff8f0;
+    color: #1d1b16;
+    overflow-x: hidden;
+  }
+
+  .font-serif-thai {
+    font-family: 'Noto Serif Thai', serif;
+  }
+
+  .font-sans-thai {
+    font-family: 'Bai Jamjuree', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Custom smooth transitions using user-specified cubic-bezier(0.22, 1, 0.36, 1) */
+.transition-cinematic {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 450ms;
+}
+
+/* Floating ambient elements */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-3deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 9s ease-in-out infinite;
+}
+
+/* Custom tourist card hover effects */
+.tourist-card {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tourist-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Scroll reveal utility classes */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f3ede4;
+}
+::-webkit-scrollbar-thumb {
+  background: #c0c7ce;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #98471d;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .animate-float-slow, .animate-float-reverse {
+    animation: none !important;
+  }
+}
+

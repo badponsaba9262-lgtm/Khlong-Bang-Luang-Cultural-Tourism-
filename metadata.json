@@ -1,0 +1,6 @@
+{
+  "name": "Khlong Bang Luang Cultural Tourism",
+  "description": "ระบบสารสนเทศและการท่องเที่ยวเชิงวัฒนธรรมชุมชนริมคลองบางหลวง แผนที่นำทาง จุดเช็คอิน และวิดีโอ 360 องศา",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
